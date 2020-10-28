@@ -6,6 +6,7 @@
     <h1>Create new Category</h1>
 
     {{ include('category/_form.html.twig') }}
-
-    <a href="{{ path('category_index') }}">back to list</a>
+<div class="pull-right">
+    <a class="pull-right" href="{{ path('category_index') }}">back to list</a>
+</div>
 {% endblock %}
