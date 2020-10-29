@@ -6,6 +6,7 @@ use App\Entity\Shop;
 use App\Form\ShopType;
 use App\Entity\User;
 use App\Repository\ShopRepository;
+use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,17 +30,24 @@ class ShopController extends AbstractController
     /**
      * @Route("/new", name="shop_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UploaderHelper $uploaderHelper): Response
     {
         $shop = new Shop();
         $form = $this->createForm(ShopType::class, $shop);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['iconImage']->getData();
+
+            if ($uploadedFile) {
+                $newFileName = $uploaderHelper->uploadShopIcon($uploadedFile);
+                $shop->setIcon($newFileName);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($shop);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Shop Added successfully');
             return $this->redirectToRoute('shop_index');
         }
 
@@ -62,12 +70,19 @@ class ShopController extends AbstractController
     /**
      * @Route("/{id}/edit", name="shop_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Shop $shop): Response
+    public function edit(Request $request, Shop $shop, UploaderHelper $uploaderHelper): Response
     {
         $form = $this->createForm(ShopType::class, $shop);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['iconImage']->getData();
+
+            if ($uploadedFile) {
+                $newFileName = $uploaderHelper->uploadShopIcon($uploadedFile);
+                $shop->setIcon($newFileName);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('shop_index');

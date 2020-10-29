@@ -17,4 +17,12 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    /**
+     * @Route("/upload/test", name="upload_test")
+     */
+    public function temporaryUploadAction()
+    {
+
+    }
 }

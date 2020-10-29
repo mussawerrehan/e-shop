@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Shop;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 class ShopType extends AbstractType
 {
@@ -13,7 +15,13 @@ class ShopType extends AbstractType
     {
         $builder
             ->add('name' , NULL , array('attr' => array('class' => 'form-control')))
-            ->add('icon' , NULL , array('attr' => array('class' => 'form-control')))
+            ->add('iconImage' , FileType::class , [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new Image()
+                ]
+            ])
             ->add('userId' , NULL , array('attr' => array('class' => 'form-control')))
         ;
     }
