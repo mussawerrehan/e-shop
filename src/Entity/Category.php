@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -65,7 +66,7 @@ class Category
 
     public function getIcon(): ?string
     {
-        return $this->icon;
+        return UploaderHelper::getPublicPath(UploaderHelper::CATEGORY_ICON.'/'.$this->icon);
     }
 
     public function setIcon(?string $icon): self

@@ -2,15 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="908dc197-b5b8-4bcc-868b-f8f0b90c6f82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Shop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ShopType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ShopType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ShopController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/CategoryType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CategoryType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ProductType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProductType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Service/UploaderHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UploaderHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/category/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/category/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/product/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/product/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/shop/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shop/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shop/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shop/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +179,7 @@
       <updated>1603795384322</updated>
       <workItem from="1603795385918" duration="32080000" />
       <workItem from="1604298323118" duration="1490000" />
-      <workItem from="1604301257802" duration="18138000" />
+      <workItem from="1604301257802" duration="20899000" />
     </task>
     <servers />
   </component>
@@ -186,6 +191,10 @@
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
     <state x="2488" y="326" width="774" height="434" key="#com.intellij.fileTypes.FileTypeChooser/0.27.3840.1053@0.27.3840.1053" timestamp="1603967083531" />
+    <state x="2547" y="241" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604395506810">
+      <screen x="0" y="27" width="3840" height="1053" />
+    </state>
+    <state x="2547" y="241" width="655" height="605" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1604395506810" />
     <state x="2588" y="211" width="574" height="665" key="NewPhpClassDialog" timestamp="1603968637647">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
@@ -194,10 +203,10 @@
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
     <state x="2244" y="87" width="1271" height="912" key="SettingsEditor/0.27.3840.1053@0.27.3840.1053" timestamp="1604389706276" />
-    <state x="2498" y="64" width="906" height="951" key="find.popup" timestamp="1604322284423">
+    <state x="2498" y="64" width="906" height="951" key="find.popup" timestamp="1604395418150">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
-    <state x="2498" y="64" width="906" height="951" key="find.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1604322284423" />
+    <state x="2498" y="64" width="906" height="951" key="find.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1604395418150" />
     <state x="2460" y="241" width="840" height="1034" key="run.anything.popup" timestamp="1604301811593">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>

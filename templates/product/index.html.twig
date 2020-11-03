@@ -21,7 +21,7 @@
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.type }}</td>
-                <td>{{ product.image }}</td>
+                <td><img src="{{ asset(product.image) }}" alt="Example" height = 30% /></td>
                 <td>
                     <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
                     <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>

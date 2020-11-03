@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -75,7 +76,7 @@ class Product
 
     public function getImage(): ?string
     {
-        return $this->image;
+        return UploaderHelper::getPublicPath(UploaderHelper::PRODUCT_IMAGE.'/'.$this->image);
     }
 
     public function setImage(?string $image): self

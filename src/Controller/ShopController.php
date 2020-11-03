@@ -41,7 +41,7 @@ class ShopController extends AbstractController
             $uploadedFile = $form['iconImage']->getData();
 
             if ($uploadedFile) {
-                $newFileName = $uploaderHelper->uploadShopIcon($uploadedFile);
+                $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::SHOP_ICON);
                 $shop->setIcon($newFileName);
             }
             $entityManager = $this->getDoctrine()->getManager();
@@ -80,7 +80,7 @@ class ShopController extends AbstractController
             $uploadedFile = $form['iconImage']->getData();
 
             if ($uploadedFile) {
-                $newFileName = $uploaderHelper->uploadShopIcon($uploadedFile);
+                $newFileName = $uploaderHelper->uploadImage($uploadedFile,UploaderHelper::SHOP_ICON);
                 $shop->setIcon($newFileName);
             }
             $this->getDoctrine()->getManager()->flush();

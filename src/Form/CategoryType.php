@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 class CategoryType extends AbstractType
 {
@@ -13,7 +15,17 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name' , NULL , array('attr' => array('class' => 'form-control')))
-            ->add('icon' , NULL , array('attr' => array('class' => 'form-control')))
+            ->add('iconImage' , FileType::class , [
+                'label' => 'Icon Image png OR jpg \\n',
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'class' => 'fomr-control custom-file'
+                ],
+                'constraints' => [
+                    new Image()
+                ]
+            ])
             ->add('shop_id' , NULL , array('attr' => array('class' => 'form-control')))
         ;
     }

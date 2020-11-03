@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
+use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,13 +29,20 @@ class CategoryController extends AbstractController
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,UploaderHelper $uploaderHelper): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $uploadedFile = $form['iconImage']->getData();
+
+            if($uploadedFile)
+            {
+                $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::CATEGORY_ICON);
+                $category->setIcon($newFileName);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
             $entityManager->flush();
@@ -61,12 +69,19 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Category $category): Response
+    public function edit(Request $request, Category $category,UploaderHelper $uploaderHelper): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $uploadedFile = $form['iconImage']->getData();
+
+            if($uploadedFile)
+            {
+                $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::CATEGORY_ICON);
+                $category->setIcon($newFileName);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('category_index');

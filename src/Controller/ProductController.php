@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,13 +29,21 @@ class ProductController extends AbstractController
     /**
      * @Route("/new", name="product_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UploaderHelper $uploaderHelper): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $uploadedFile = $form['ProductImage']->getData();
+
+            if($uploadedFile)
+            {
+                $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::PRODUCT_IMAGE);
+                $product->setImage($newFileName);
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
@@ -61,12 +70,19 @@ class ProductController extends AbstractController
     /**
      * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Product $product): Response
+    public function edit(Request $request, Product $product,UploaderHelper $uploaderHelper): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $uploadedFile = $form['ProductImage']->getData();
+
+            if($uploadedFile)
+            {
+                $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::PRODUCT_IMAGE);
+                $product->setImage($newFileName);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('product_index');
