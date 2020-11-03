@@ -2,24 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="908dc197-b5b8-4bcc-868b-f8f0b90c6f82" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/UploaderHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ShopController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Shop.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/ShopType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ShopType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/UploaderHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UploaderHelper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/shop/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shop/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/shop/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shop/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -138,8 +145,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/uploads/shop_image" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gulp production" />
+    </option>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -149,7 +172,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603795384322</updated>
-      <workItem from="1603795385918" duration="31285000" />
+      <workItem from="1603795385918" duration="32080000" />
+      <workItem from="1604298323118" duration="1490000" />
+      <workItem from="1604301257802" duration="18138000" />
     </task>
     <servers />
   </component>
@@ -165,14 +190,18 @@
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
     <state x="2588" y="211" width="574" height="665" key="NewPhpClassDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1603968637647" />
-    <state x="2498" y="64" width="906" height="951" key="find.popup" timestamp="1603968589755">
+    <state x="2244" y="87" width="1271" height="912" key="SettingsEditor" timestamp="1604389706276">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
-    <state x="2498" y="64" width="906" height="951" key="find.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1603968589755" />
-    <state x="2460" y="241" key="run.anything.popup" timestamp="1603954295708">
+    <state x="2244" y="87" width="1271" height="912" key="SettingsEditor/0.27.3840.1053@0.27.3840.1053" timestamp="1604389706276" />
+    <state x="2498" y="64" width="906" height="951" key="find.popup" timestamp="1604322284423">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>
-    <state x="2460" y="241" key="run.anything.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1603954295708" />
+    <state x="2498" y="64" width="906" height="951" key="find.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1604322284423" />
+    <state x="2460" y="241" width="840" height="1034" key="run.anything.popup" timestamp="1604301811593">
+      <screen x="0" y="27" width="3840" height="1053" />
+    </state>
+    <state x="2460" y="241" width="840" height="1034" key="run.anything.popup/0.27.3840.1053@0.27.3840.1053" timestamp="1604301811593" />
     <state x="1078" y="45" width="1680" height="1034" key="search.everywhere.popup" timestamp="1603889757304">
       <screen x="0" y="27" width="3840" height="1053" />
     </state>

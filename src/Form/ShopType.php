@@ -16,8 +16,12 @@ class ShopType extends AbstractType
         $builder
             ->add('name' , NULL , array('attr' => array('class' => 'form-control')))
             ->add('iconImage' , FileType::class , [
+                'label' => 'Icon Image png OR jpg \\n',
                 'mapped' => false,
                 'required' => false,
+                'attr' => [
+                  'class' => 'fomr-control custom-file'
+                ],
                 'constraints' => [
                     new Image()
                 ]

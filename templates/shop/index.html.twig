@@ -19,7 +19,9 @@
             <tr>
                 <td>{{ shop.id }}</td>
                 <td>{{ shop.name }}</td>
-                <td>{{ shop.icon }}</td>
+                <td>
+                    <a href="/"><img src="{{ asset(shop.icon) }}" alt="Example" height = 30% /></a>
+                </td>
                 <td>
                     <a href="{{ path('shop_show', {'id': shop.id}) }}">show</a>
                     <a href="{{ path('shop_edit', {'id': shop.id}) }}">edit</a>
