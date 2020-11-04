@@ -1,6 +1,20 @@
-<div class="sidebar">
-    <a class="active" href="#home">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-</div>
+<aside class="col-xs-12 col-md-12 col-lg-3 side-menu">
+    <nav class="left-nav hidden-xs hidden-sm hidden-md">
+        <ul class="nolist">
+            <li>
+                {% if categorylist is empty %}
+                    <a href="#">Empty</a>
+                {% else %}
+                    {{ categorylist | raw }}
+                {% endif %}
+            </li>
+            <li>
+                {% if shoplist is empty %}
+                    <a href="#">Empty</a>
+                {% else %}
+                    {{ shoplist | raw }}
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+</aside>
