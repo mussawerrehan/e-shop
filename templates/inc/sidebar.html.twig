@@ -6,9 +6,7 @@
                 <a href="#">Shops</a>
                 <ul class="nolist">
                     {% for shop in sidebar.shops %}
-                        <a href="{{ path('shop_show', {'id': shop.id}) }}">
-                            <li>{{ shop.name }}</li>
-                        </a>
+                            <li onclick="{{ path('shop_show', {'id': shop.id}) }}">{{ shop.name }}</li>
                     {% endfor %}
                 </ul>
             </li>
