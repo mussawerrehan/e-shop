@@ -20,8 +20,6 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'products' => $productRepository->findAll(),
             'controller_name' => 'HomeController',
-            'shops' => $shopRepository->findAll(),
-            'categories' => $categoryRepository->findAll(),
         ]);
     }
 

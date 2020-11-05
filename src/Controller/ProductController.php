@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
+use App\Service\DoctrineHelper;
 use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/new", name="product_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UploaderHelper $uploaderHelper): Response
+    public function new(Request $request, UploaderHelper $uploaderHelper, DoctrineHelper $doctrineHelper): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
@@ -43,10 +44,7 @@ class ProductController extends AbstractController
                 $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::PRODUCT_IMAGE);
                 $product->setImage($newFileName);
             }
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($product);
-            $entityManager->flush();
+            $doctrineHelper->AddToDb($product);
 
             return $this->redirectToRoute('product_index');
         }
@@ -97,12 +95,11 @@ class ProductController extends AbstractController
     /**
      * @Route("/{id}", name="product_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Product $product): Response
+    public function delete(Request $request, Product $product, DoctrineHelper $doctrineHelper): Response
     {
+
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($product);
-            $entityManager->flush();
+            $doctrineHelper->DeleteFromDb($product);
         }
 
         return $this->redirectToRoute('product_index');

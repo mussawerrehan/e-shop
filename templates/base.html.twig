@@ -10,11 +10,7 @@
 <body>
 {{ include('inc/navbar.html.twig') }}
 <div class="row">
-        {% include 'inc/sidebar.html.twig' with {shoplist: block('shoplist')|default(null), categorylist: block('categorylist')|default(null) } %}
-    <div class="hidden" style="display: none">
-        {% block shoplist %} {% endblock %}
-        {% block categorylist %} {% endblock %}
-    </div>
+        {% include 'inc/sidebar.html.twig' %}
     <div class="container">
         {% block body %}{% endblock %}
     </div>

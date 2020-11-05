@@ -6,6 +6,7 @@ use App\Entity\Shop;
 use App\Form\ShopType;
 use App\Entity\User;
 use App\Repository\ShopRepository;
+use App\Service\DoctrineHelper;
 use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +31,7 @@ class ShopController extends AbstractController
     /**
      * @Route("/new", name="shop_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UploaderHelper $uploaderHelper): Response
+    public function new(Request $request, UploaderHelper $uploaderHelper, DoctrineHelper $doctrineHelper): Response
     {
         $shop = new Shop();
         $form = $this->createForm(ShopType::class, $shop);
@@ -44,9 +45,7 @@ class ShopController extends AbstractController
                 $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::SHOP_ICON);
                 $shop->setIcon($newFileName);
             }
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($shop);
-            $entityManager->flush();
+            $doctrineHelper->AddToDb($shop);
             $this->addFlash('success', 'Shop Added successfully');
             return $this->redirectToRoute('shop_index');
         }
@@ -97,12 +96,10 @@ class ShopController extends AbstractController
     /**
      * @Route("/{id}", name="shop_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Shop $shop): Response
+    public function delete(Request $request, Shop $shop, DoctrineHelper $doctrineHelper): Response
     {
         if ($this->isCsrfTokenValid('delete'.$shop->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($shop);
-            $entityManager->flush();
+            $doctrineHelper->DeleteFromDb($shop);
         }
 
         return $this->redirectToRoute('shop_index');

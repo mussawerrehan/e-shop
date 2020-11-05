@@ -2,22 +2,10 @@
 
 {% block title %}Hello HomeController!{% endblock %}
 {% block shoplist %}
-    <a href="#">Shops</a>
-    <ul class="nolist">
-        {% for shop in shops %}
-            <a href="{{ path('shop_show', {'id': shop.id}) }}">
-            <li>{{ shop.name }}</li>
-            </a>
-        {% endfor %}
-    </ul>
+
 {% endblock %}
 {% block categorylist %}
-    <a href="#">Categories</a>
-    <ul class="nolist">
-        {% for category in categories %}
-            <li>{{ category.name }}</li>
-        {% endfor %}
-    </ul>
+
 {% endblock %}
 
 

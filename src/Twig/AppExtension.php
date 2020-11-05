@@ -9,8 +9,29 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
+/**
+ * Class AppExtension
+ * @package App\Twig
+ * @property ShopRepository $shopRepository
+ * @property CategoryRepository $categoryRepository
+ */
 class AppExtension extends AbstractExtension implements ServiceSubscriberInterface
 {
+    /**
+     * AppExtension constructor.
+     * @param ShopRepository $shopRepository
+     * @param CategoryRepository $categoryRepository
+     */
+    public function __construct(ShopRepository $shopRepository, CategoryRepository $categoryRepository)
+    {
+        $this->shopRepository = $shopRepository;
+        $this->categoryRepository = $categoryRepository;
+
+    }
+
+    /**
+     * @return TwigFilter[]
+     */
     public function getFilters(): array
     {
         return [
@@ -21,6 +42,9 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
         ];
     }
 
+    /**
+     * @return TwigFunction[]
+     */
     public function getFunctions(): array
     {
         return [
@@ -28,16 +52,20 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
         ];
     }
 
-    public function getShopSidebar(\Twig_Environment $twig)
+    /**
+     * @return array
+     */
+    public function getShopSidebar()
     {
-        $shopRepository = $this->get(ShopRepository::class);
-        $categoryRepository = $this->get(CategoryRepository::class);
-
-        return $twig->render('/inc/sidebar.html.twig', [
-            'shops' => $shopRepository->findAll(),
-            'categories' => $categoryRepository->findAll(),
-        ]);
+        return [
+            'shops' => $this->shopRepository->findAll(),
+            'categories' => $this->categoryRepository->findAll(),
+        ];
     }
+
+    /**
+     * @return array|string[]
+     */
     public static function getSubscribedServices()
     {
         return [

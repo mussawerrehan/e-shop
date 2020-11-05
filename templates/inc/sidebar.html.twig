@@ -1,19 +1,24 @@
 <aside class="col-xs-12 col-md-12 col-lg-3 side-menu">
     <nav class="left-nav hidden-xs hidden-sm hidden-md">
         <ul class="nolist">
+            {% set sidebar = shop_sidebar() %}
             <li>
-                {% if categorylist is empty %}
-                    <a href="#">Empty</a>
-                {% else %}
-                    {{ categorylist | raw }}
-                {% endif %}
+                <a href="#">Shops</a>
+                <ul class="nolist">
+                    {% for shop in sidebar.shops %}
+                        <a href="{{ path('shop_show', {'id': shop.id}) }}">
+                            <li>{{ shop.name }}</li>
+                        </a>
+                    {% endfor %}
+                </ul>
             </li>
             <li>
-                {% if shoplist is empty %}
-                    <a href="#">Empty</a>
-                {% else %}
-                    {{ shoplist | raw }}
-                {% endif %}
+                <a href="#">Categories</a>
+                <ul class="nolist">
+                    {% for category in sidebar.categories %}
+                        <li>{{ category.name }}</li>
+                    {% endfor %}
+                </ul>
             </li>
         </ul>
     </nav>

@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
+use App\Service\DoctrineHelper;
 use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,7 +31,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
      */
-    public function new(Request $request,UploaderHelper $uploaderHelper): Response
+    public function new(Request $request,UploaderHelper $uploaderHelper, DoctrineHelper $doctrineHelper): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
@@ -44,9 +45,7 @@ class CategoryController extends AbstractController
                 $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::CATEGORY_ICON);
                 $category->setIcon($newFileName);
             }
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($category);
-            $entityManager->flush();
+            $doctrineHelper->AddToDb($category);
 
             return $this->redirectToRoute('category_index');
         }
@@ -60,10 +59,8 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}", name="category_show", methods={"GET"})
      */
-    public function show(Category $category,ProductRepository $productRepository): Response
+    public function show(Category $category): Response
     {
-        $products = $productRepository->findBy(['category' => $category]);
-        dd($products);
         return $this->render('category/show.html.twig', [
             'category' => $category,
         ]);
@@ -99,12 +96,10 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}", name="category_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Category $category): Response
+    public function delete(Request $request, Category $category, DoctrineHelper $doctrineHelper): Response
     {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($category);
-            $entityManager->flush();
+            $doctrineHelper->DeleteFromDb($category);
         }
 
         return $this->redirectToRoute('category_index');
