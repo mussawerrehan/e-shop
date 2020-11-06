@@ -16,7 +16,7 @@ class CategoryType extends AbstractType
         $builder
             ->add('name' , NULL , array('attr' => array('class' => 'form-control')))
             ->add('iconImage' , FileType::class , [
-                'label' => 'Icon Image png OR jpg \\n',
+                'label' => 'Icon Image png OR jpg',
                 'mapped' => false,
                 'required' => false,
                 'attr' => [
@@ -27,6 +27,9 @@ class CategoryType extends AbstractType
                 ]
             ])
             ->add('shop_id' , NULL , array('attr' => array('class' => 'form-control')))
+            ->add('parent_id' , NULL , array(
+                'attr' => array('class' => 'form-control '),
+                'label' => 'Parent Category only for Sub category'))
         ;
     }
 

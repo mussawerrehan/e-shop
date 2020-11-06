@@ -42,9 +42,20 @@ class Category
      */
     private $products;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="categories")
+     */
+    private $parent_id;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="parent_id")
+     */
+    private $categories;
+
     public function __construct()
     {
         $this->products = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -118,5 +129,47 @@ class Category
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getParentId(): ?self
+    {
+        return $this->parent_id;
+    }
+
+    public function setParentId(?self $parent_id): self
+    {
+        $this->parent_id = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(self $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->setParentId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(self $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            // set the owning side to null (unless already changed)
+            if ($category->getParentId() === $this) {
+                $category->setParentId(null);
+            }
+        }
+
+        return $this;
     }
 }

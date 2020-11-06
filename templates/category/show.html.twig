@@ -19,6 +19,13 @@
                 <th>Icon</th>
                 <td><img src="{{ asset(category.icon) }}" alt="Example" height = 30% /></td>
             </tr>
+            <tr>
+                <th>Sub Categories</th>
+                <td> {% for subcategory in category.categories %}
+                    {{ subcategory }} ,
+                    {% endfor %}
+                </td>
+            </tr>
         </tbody>
     </table>
 
