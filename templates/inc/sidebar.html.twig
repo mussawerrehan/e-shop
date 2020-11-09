@@ -2,19 +2,23 @@
     <nav class="left-nav hidden-xs hidden-sm hidden-md">
         <ul class="nolist">
             {% set sidebar = shop_sidebar() %}
-            <li>
-                <a href="#">Shops</a>
-                <ul class="nolist">
-                    {% for shop in sidebar.shops %}
-                            <li onclick="{{ path('shop_show', {'id': shop.id}) }}">{{ shop.name }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
+{#            <li>#}
+{#                <a href="#">Shops</a>#}
+{#                <ul class="nolist">#}
+{#                    {% for shop in sidebar.shops %}#}
+{#                        <a href="{{ path('shop_show', {'id': shop.id}) }}">#}
+{#                            <li>{{ shop.name }}</li>#}
+{#                        </a>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </li>#}
             <li>
                 <a href="#">Categories</a>
                 <ul class="nolist">
                     {% for category in sidebar.categories %}
+                    <a href="{{ path('home_show', {'id': category.id}) }}">
                         <li>{{ category.name }}</li>
+                    </a>
                     {% endfor %}
                 </ul>
             </li>

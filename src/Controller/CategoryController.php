@@ -57,16 +57,6 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category_show", methods={"GET"})
-     */
-    public function show(Category $category): Response
-    {
-        return $this->render('category/show.html.twig', [
-            'category' => $category,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category,UploaderHelper $uploaderHelper): Response
@@ -103,5 +93,27 @@ class CategoryController extends AbstractController
         }
 
         return $this->redirectToRoute('category_index');
+    }
+
+    /**
+     * @Route("/{id}", name="home_show", methods={"GET"})
+     */
+    public function showProducts(Category $category): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'products' => $category->getProducts(),
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+
+    /**
+     * @Route("/{id}", name="category_show", methods={"GET"})
+     */
+    public function show(Category $category): Response
+    {
+        return $this->render('category/show.html.twig', [
+            'category' => $category,
+        ]);
     }
 }

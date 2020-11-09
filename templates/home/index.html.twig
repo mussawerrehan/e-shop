@@ -18,11 +18,11 @@
 <div class="row">
 {% for product in products %}
     <div class="card col-md-4" style="width: 18rem;">
-        <img class="card-img-top" src="{{ product.image }}" alt="Card image cap">
+        <img class="card-img-top" src="{{ asset(product.image) }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ product.name }}</h5>
             <p class="card-text">this item is {{ product.type }} type</p>
-            <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-primary">Go somewhere</a>
+            <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-primary">Show Details</a>
         </div>
     </div>
     {% else %}
