@@ -19,10 +19,9 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
 {
     /**
      * AppExtension constructor.
-     * @param ShopRepository $shopRepository
      * @param CategoryRepository $categoryRepository
      */
-    public function __construct(ShopRepository $shopRepository, CategoryRepository $categoryRepository)
+    public function __construct(CategoryRepository $categoryRepository,ShopRepository $shopRepository)
     {
         $this->shopRepository = $shopRepository;
         $this->categoryRepository = $categoryRepository;
@@ -57,8 +56,8 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
      */
     public function getShopSidebar()
     {
+//        $shop = $this->get_current_user();
         return [
-            'shops' => $this->shopRepository->findAll(),
             'categories' => $this->categoryRepository->findAll(),
         ];
     }
@@ -70,7 +69,6 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
     {
         return [
             CategoryRepository::class,
-            ShopRepository::class,
         ];
     }
 }

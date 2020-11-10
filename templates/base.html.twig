@@ -10,7 +10,9 @@
 <body>
 {{ include('inc/navbar.html.twig') }}
 <div class="row">
+    {% if app.user %}
         {% include 'inc/sidebar.html.twig' %}
+    {% endif %}
     <div class="container">
         {% block body %}{% endblock %}
     </div>

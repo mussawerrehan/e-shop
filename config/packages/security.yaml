@@ -22,6 +22,7 @@ security:
                     - App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
+                target: app_login
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -39,8 +40,10 @@ security:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/logout, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/home, roles: ROLE_CUSTOMER }
-        - { path: ^/, roles: ROLE_SHOP }
-        - { path: ^/, roles: ROLE_ADMIN }
+        - { path: /home, roles: ROLE_CUSTOMER }
+        - { path: ^/category, roles: ROLE_SHOP }
+        - { path: ^/shop/new, roles: ROLE_SHOP }
+        - { path: ^/product, roles: ROLE_SHOP }
+        - { path: ^/shop, roles: ROLE_ADMIN }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

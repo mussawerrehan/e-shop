@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/home", name="home")
+     * @Route("/home", name="home_index")
      */
     public function index(ProductRepository $productRepository,ShopRepository $shopRepository, CategoryRepository $categoryRepository): Response
     {

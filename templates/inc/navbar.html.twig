@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
     <div class="container">
-        <a href="/" class="navbar-brand">E-Shop</a>
+        <a href="/home" class="navbar-brand">E-Shop</a>
         <button class="navbar-toggler" type=""button data-toggle="collapse"
                 data-target="#mobile-nav">
             <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,12 @@
                     <a href="/home" class="nav-link">Home</a>
                 </li>
                 {% if app.user %}
-                    {% if is_granted("ROLE_SHOP") %}
+                    {% if is_granted("ROLE_ADMIN") %}
                         <li class="nav-item">
                             <a href="/shop" class="nav-link">Shops</a>
                         </li>
+                    {% endif %}
+                    {% if is_granted("ROLE_SHOP") %}
                         <li class="nav-item">
                             <a href="/category" class="nav-link">Categories</a>
                         </li>

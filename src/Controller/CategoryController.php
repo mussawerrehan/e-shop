@@ -23,8 +23,9 @@ class CategoryController extends AbstractController
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
+        $shop = $this->getUser()->getShop();
         return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
+            'categories' => $categoryRepository->findBy(['shop_id' => $shop]),
         ]);
     }
 
@@ -45,6 +46,7 @@ class CategoryController extends AbstractController
                 $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::CATEGORY_ICON);
                 $category->setIcon($newFileName);
             }
+            $category->setShopId($this->getUser()->getShop());
             $doctrineHelper->AddToDb($category);
 
             return $this->redirectToRoute('category_index');
@@ -96,7 +98,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="home_show", methods={"GET"})
+     * @Route("/list/{id}", name="category_show_home", methods={"GET"})
      */
     public function showProducts(Category $category): Response
     {

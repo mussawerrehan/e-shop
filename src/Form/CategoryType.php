@@ -26,7 +26,6 @@ class CategoryType extends AbstractType
                     new Image()
                 ]
             ])
-            ->add('shop_id' , NULL , array('attr' => array('class' => 'form-control')))
             ->add('parent_id' , NULL , array(
                 'attr' => array('class' => 'form-control '),
                 'label' => 'Parent Category only for Sub category'))

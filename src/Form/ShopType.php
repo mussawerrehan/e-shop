@@ -26,7 +26,6 @@ class ShopType extends AbstractType
                     new Image()
                 ]
             ])
-            ->add('userId' , NULL , array('attr' => array('class' => 'form-control')))
         ;
     }
 

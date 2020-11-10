@@ -37,14 +37,9 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity=Shop::class, mappedBy="userId")
+     * @ORM\OneToOne(targetEntity=Shop::class, mappedBy="user", cascade={"persist", "remove"})
      */
-    private $shops;
-
-    public function __construct()
-    {
-        $this->shops = new ArrayCollection();
-    }
+    private $shop;
 
     public function getId(): ?int
     {
@@ -124,38 +119,25 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    /**
-     * @return Collection|Shop[]
-     */
-    public function getShops(): Collection
-    {
-        return $this->shops;
-    }
-
-    public function addShop(Shop $shop): self
-    {
-        if (!$this->shops->contains($shop)) {
-            $this->shops[] = $shop;
-            $shop->setUserId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeShop(Shop $shop): self
-    {
-        if ($this->shops->removeElement($shop)) {
-            // set the owning side to null (unless already changed)
-            if ($shop->getUserId() === $this) {
-                $shop->setUserId(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->email;
+    }
+
+    public function getShop(): ?Shop
+    {
+        return $this->shop;
+    }
+
+    public function setShop(Shop $shop): self
+    {
+        $this->shop = $shop;
+
+        // set the owning side of the relation if necessary
+        if ($shop->getUser() !== $this) {
+            $shop->setUser($this);
+        }
+
+        return $this;
     }
 }

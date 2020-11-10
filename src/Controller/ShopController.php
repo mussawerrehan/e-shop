@@ -45,6 +45,8 @@ class ShopController extends AbstractController
                 $newFileName = $uploaderHelper->uploadImage($uploadedFile, UploaderHelper::SHOP_ICON);
                 $shop->setIcon($newFileName);
             }
+//            dd($request);
+            $shop->setUser($this->getUser());
             $doctrineHelper->AddToDb($shop);
             $this->addFlash('success', 'Shop Added successfully');
             return $this->redirectToRoute('shop_index');

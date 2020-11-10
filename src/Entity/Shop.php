@@ -32,15 +32,15 @@ class Shop
     private $icon;
 
     /**
-     * @ORM\ManyToOne(targetEntity=user::class, inversedBy="shops")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $userId;
-
-    /**
      * @ORM\OneToMany(targetEntity=Category::class, mappedBy="shop_id")
      */
     private $categories;
+
+    /**
+     * @ORM\OneToOne(targetEntity=user::class, inversedBy="shop", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     public function __construct()
     {
@@ -72,18 +72,6 @@ class Shop
     public function setIcon(?string $icon): self
     {
         $this->icon = $icon;
-
-        return $this;
-    }
-
-    public function getUserId(): ?user
-    {
-        return $this->userId;
-    }
-
-    public function setUserId(?user $userId): self
-    {
-        $this->userId = $userId;
 
         return $this;
     }
@@ -121,5 +109,17 @@ class Shop
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getUser(): ?user
+    {
+        return $this->user;
+    }
+
+    public function setUser(user $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }
