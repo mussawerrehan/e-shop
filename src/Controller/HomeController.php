@@ -14,7 +14,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/home", name="home_index")
      */
-    public function index(ProductRepository $productRepository,ShopRepository $shopRepository, CategoryRepository $categoryRepository): Response
+    public function index(ProductRepository $productRepository): Response
     {
 
         return $this->render('home/index.html.twig', [
@@ -23,11 +23,4 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/upload/test", name="upload_test")
-     */
-    public function temporaryUploadAction()
-    {
-
-    }
 }
