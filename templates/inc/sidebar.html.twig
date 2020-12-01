@@ -1,0 +1,31 @@
+<aside class="col-xs-12 col-md-12 col-lg-3 side-menu">
+    <nav class="left-nav hidden-xs hidden-sm hidden-md">
+        <ul class="nolist">
+            {% set sidebar = shop_sidebar() %}
+{#            <li>#}
+{#                <a href="#">Shops</a>#}
+{#                <ul class="nolist">#}
+{#                    {% for shop in sidebar.shops %}#}
+{#                        <a href="{{ path('shop_show', {'id': shop.id}) }}">#}
+{#                            <li>{{ shop.name }}</li>#}
+{#                        </a>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </li>#}
+            <li>
+                <a href="#">Categories</a>
+                <ul class="nolist">
+                    {% for category in sidebar.categories %}
+                        {% if app.user.shop is defined and app.user.shop is not null %}
+                            {% if category.shopId.id == app.user.shop.id %}
+                            <a href="{{ path('category_show_home', {'id': category.id}) }}">
+                                <li>{{ category.name }}</li>
+                            </a>
+                        {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</aside>

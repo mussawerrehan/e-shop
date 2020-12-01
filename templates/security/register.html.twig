@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign Up!{% endblock %}
+{% block body %}
+    <form action="#" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Please provide SignUp details</h1>
+        <label for="inputUsername">Username</label>
+        <input class="text form-control" type="text" name="Username" placeholder="Username" required="">
+        <label for="inputEmail">Email</label>
+        <input class="text form-control" type="email" name="email" placeholder="Email" required="">
+        <label for="inputRole">Role</label>
+        <select class="form-control" name="roles" id="nature">
+            <option value ="ROLE_SHOP">Shop</option>
+            <option value ="ROLE_CUSTOMER">Customer</option>
+        </select>
+        <label for="inputpassword">Password</label>
+        <input class="text form-control password" type="password" name="password" placeholder="Password" required="">
+        <label for="inputCheckPassword">Confirm Password</label>
+        <input class="text form-control confirm_password" type="password" name="password" placeholder="Confirm Password" required="">
+        <span id='message'></span>
+        <div>
+            <label >
+                <input type="checkbox" class="checkbox" required="">
+                <span>I Agree To The Terms & Conditions</span>
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary" type="submit">
+            Register
+        </button>
+    </form>
+    <p>Don't have an Account? <a href="{{ path('app_login') }}"> Login Now!</a></p>
+{% endblock %}
